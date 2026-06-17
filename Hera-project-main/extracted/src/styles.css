@@ -1,0 +1,186 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", ui-serif, Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-sage: var(--sage);
+  --color-rose: var(--rose);
+  --color-sky-pastel: var(--sky-pastel);
+  --color-clay: var(--clay);
+  --color-lavender: var(--lavender);
+  --color-mint: var(--mint);
+
+  /* Distinct per-module accent hues (each ≥55° apart so no two cards share a color) */
+  --color-m-physique: var(--m-physique);
+  --color-m-habitudes: var(--m-habitudes);
+  --color-m-nutrition: var(--m-nutrition);
+  --color-m-journal: var(--m-journal);
+  --color-m-sommeil: var(--m-sommeil);
+  --color-m-mentale: var(--m-mentale);
+
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+:root {
+  --radius: 1rem;
+
+  /* Editorial pastel palette */
+  --background: oklch(0.985 0.008 80);          /* #FDFBF7 warm off-white */
+  --foreground: oklch(0.28 0.005 60);           /* #2D2D2D */
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.28 0.005 60);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.28 0.005 60);
+
+  --primary: oklch(0.78 0.06 50);               /* clay #E6BFA7 */
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.92 0.025 130);           /* sage */
+  --secondary-foreground: oklch(0.28 0.005 60);
+  --muted: oklch(0.96 0.008 80);
+  --muted-foreground: oklch(0.5 0.01 60);
+  --accent: oklch(0.92 0.02 80);                /* rose */
+  --accent-foreground: oklch(0.28 0.005 60);
+  --destructive: oklch(0.65 0.18 25);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.92 0.005 80);
+  --input: oklch(0.94 0.005 80);
+  --ring: oklch(0.78 0.06 50);
+
+  /* Pastel module accents */
+  --sage: oklch(0.92 0.025 145);                /* #DDE8DA physique */
+  --rose: oklch(0.92 0.025 55);                 /* #F2E3DB nutrition warm */
+  --sky-pastel: oklch(0.92 0.018 235);          /* #E1E9F0 sommeil */
+  --clay: oklch(0.78 0.06 50);                  /* #E6BFA7 accent */
+  --lavender: oklch(0.9 0.04 300);              /* mental */
+  --mint: oklch(0.92 0.035 165);                /* nutrition cool */
+
+  /* Per-module accents, evenly spaced around the wheel so every card is a
+     distinct hue. Card backgrounds are these same colors at low opacity. */
+  --m-physique: oklch(0.7 0.1 25);              /* coral */
+  --m-habitudes: oklch(0.72 0.09 85);           /* amber */
+  --m-nutrition: oklch(0.66 0.09 150);          /* green */
+  --m-journal: oklch(0.64 0.08 205);            /* teal */
+  --m-sommeil: oklch(0.62 0.1 260);             /* indigo */
+  --m-mentale: oklch(0.62 0.12 320);            /* orchid */
+}
+
+.dark {
+  --background: oklch(0.2 0.01 60);
+  --foreground: oklch(0.97 0.005 80);
+  --card: oklch(0.25 0.01 60);
+  --card-foreground: oklch(0.97 0.005 80);
+  --popover: oklch(0.25 0.01 60);
+  --popover-foreground: oklch(0.97 0.005 80);
+  --primary: oklch(0.78 0.06 50);
+  --primary-foreground: oklch(0.2 0.01 60);
+  --secondary: oklch(0.3 0.015 130);
+  --secondary-foreground: oklch(0.97 0.005 80);
+  --muted: oklch(0.28 0.01 60);
+  --muted-foreground: oklch(0.7 0.01 60);
+  --accent: oklch(0.3 0.02 60);
+  --accent-foreground: oklch(0.97 0.005 80);
+  --destructive: oklch(0.55 0.2 25);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 12%);
+  --ring: oklch(0.78 0.06 50);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  .font-serif-italic {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 600;
+  }
+}
+
+@keyframes ringFill {
+  from { clip-path: inset(100% 0 0 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-slide-up { animation: slideUp 0.8s var(--ease-out-expo) both; }
+.animate-ring-fill { animation: ringFill 1.2s var(--ease-out-expo) both; }
+
+/* --- Celebration popup (objectifs 100%) --- */
+@keyframes confettiFall {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -10vh, 0) rotate(0deg);
+  }
+  8% { opacity: 1; }
+  100% {
+    opacity: 1;
+    transform: translate3d(var(--drift, 0px), 110vh, 0) rotate(var(--rot, 360deg));
+  }
+}
+@keyframes celebrateFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes celebratePop {
+  0% { opacity: 0; transform: scale(0.8) translateY(12px); }
+  60% { transform: scale(1.03) translateY(0); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes celebrateBadge {
+  0% { transform: scale(0) rotate(-30deg); }
+  55% { transform: scale(1.15) rotate(8deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+.animate-confetti-fall { animation: confettiFall linear both; }
+.animate-celebrate-fade { animation: celebrateFade 0.3s ease-out both; }
+.animate-celebrate-pop { animation: celebratePop 0.5s var(--ease-out-expo) both; }
+.animate-celebrate-badge { animation: celebrateBadge 0.6s var(--ease-out-expo) 0.15s both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-confetti-fall { animation: none; opacity: 0; }
+  .animate-celebrate-pop,
+  .animate-celebrate-badge { animation: celebrateFade 0.3s ease-out both; }
+}
