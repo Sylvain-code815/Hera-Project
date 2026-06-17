@@ -7,10 +7,11 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { SplashScreen } from "../components/splash-screen";
 
 function NotFoundComponent() {
   return (
@@ -120,11 +121,19 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  // Splash de démarrage : affiché au-dessus de TOUTES les routes (onboarding compris).
+  const [booting, setBooting] = useState(true);
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      {/* Tant que le chargement n'est pas terminé, on n'affiche QUE le splash :
+          le contenu (onboarding inclus) n'est pas rendu derrière. */}
+      {booting ? (
+        <SplashScreen onFinish={() => setBooting(false)} />
+      ) : (
+        // Required: nested routes render here. Removing <Outlet /> breaks all child routes.
+        <Outlet />
+      )}
     </QueryClientProvider>
   );
 }

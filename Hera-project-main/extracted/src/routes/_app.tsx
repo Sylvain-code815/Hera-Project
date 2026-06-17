@@ -23,6 +23,15 @@ function AppLayout() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      {/* Logo — top-left, persistent */}
+      <Link
+        to="/"
+        className="fixed top-4 left-4 z-30 size-10 rounded-2xl bg-clay text-white shadow-sm flex items-center justify-center hover:opacity-90 transition-opacity"
+        aria-label="Accueil"
+      >
+        <span className="font-serif-italic text-xl leading-none">H</span>
+      </Link>
+
       {/* Profile button — top-right, persistent */}
       <Link
         to="/profil"

@@ -1,6 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ChevronLeft, Lightbulb } from "lucide-react";
 import { getModule, type ModuleId, type ModuleTone } from "@/lib/sante-modules";
+import { JournalChat } from "@/components/journal-chat";
 
 export const Route = createFileRoute("/_app/sante/$module")({
   head: ({ params }) => {
@@ -167,19 +168,10 @@ function Detail({ id, tone }: { id: ModuleId; tone: ModuleTone }) {
     case "journal":
       return (
         <div className="space-y-4">
-          <div className={card}>
-            <p className="font-serif-italic text-base text-foreground/80 mb-3">
-              « Aujourd'hui, je suis reconnaissant(e) pour... »
-            </p>
-            <textarea
-              rows={5}
-              placeholder="Écrivez librement…"
-              className={`w-full bg-background rounded-2xl border border-border p-3 text-sm resize-none focus:outline-hidden focus:ring-2 ${tone.ring}`}
-            />
-            <button className={`mt-3 w-full py-3 ${tone.solid} text-white rounded-2xl text-sm font-medium`}>
-              Enregistrer
-            </button>
-          </div>
+          <p className="font-serif-italic text-base text-foreground/80 px-1">
+            Prends un instant pour déposer tes pensées. Sereine est là pour t'écouter.
+          </p>
+          <JournalChat tone={tone} />
           <div className={card}>
             <p className="text-xs uppercase tracking-widest text-muted-foreground font-bold mb-3">Cette semaine</p>
             <ul className="space-y-3 text-sm">
